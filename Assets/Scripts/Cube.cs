@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +7,21 @@ public class Cube : MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Explosion _explosion;
+    [SerializeField] private float _chanceOfSeparation = 1.0f;
 
-    private List<Rigidbody> _childObjects = new();
-
-    public float ChanceOfSeparation = 1.0f;
+    private List<Rigidbody> _childCubes = new();
 
     private void OnMouseUpAsButton()
     {
-        _spawner.Spawn(ChanceOfSeparation, ref _childObjects);
-        _explosion.Explode(_childObjects);
+        _childCubes = _spawner.Spawn(_chanceOfSeparation);
+        _explosion.Explode(_childCubes);
         Destroy(gameObject);
+    }
+
+    public void ChangeParameters(float reducingParameters)
+    {
+        transform.localScale /= reducingParameters;
+        _chanceOfSeparation /= reducingParameters;
+        gameObject.GetComponent<Renderer>().material.color = Random.ColorHSV();
     }
 }
