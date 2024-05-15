@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8619267426367004402}
   - component: {fileID: 5871797776533487526}
   - component: {fileID: -1293013098049601965}
-  - component: {fileID: -7934012934368121312}
-  - component: {fileID: -6643749322602030221}
+  - component: {fileID: 6094097176225104251}
+  - component: {fileID: 4239512041001796959}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -148,10 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9064ef0d9a7bd4649a6dfbde2864d8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: -7934012934368121312}
-  _explosion: {fileID: -6643749322602030221}
+  _spawner: {fileID: 6094097176225104251}
+  _explosion: {fileID: 4239512041001796959}
   _chanceOfSeparation: 1
---- !u!114 &-7934012934368121312
+  _effect: {fileID: 6146545414153545492, guid: 61753401622c2a947a30e2147430e97d, type: 3}
+--- !u!114 &6094097176225104251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,10 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2309c2d38f44ec84faff80192eb33585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cube: {fileID: -1293013098049601965}
+  _cubePrefab: {fileID: -1293013098049601965}
   _minQuantityObject: 2
   _maxQuantityObject: 6
---- !u!114 &-6643749322602030221
+--- !u!114 &4239512041001796959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,5 +179,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717e14c21dc9e2b41a3424e37dab2c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 30
+  _radius: 500
   _force: 300

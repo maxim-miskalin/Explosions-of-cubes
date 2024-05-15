@@ -8,6 +8,7 @@ public class Cube : MonoBehaviour
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Explosion _explosion;
     [SerializeField] private float _chanceOfSeparation = 1.0f;
+    [SerializeField] private ParticleSystem _effect;
 
     private Rigidbody _rigidbody;
 
@@ -20,8 +21,15 @@ public class Cube : MonoBehaviour
     {
         List<Rigidbody> childCubes = new();
 
+        Instantiate(_effect, transform.position, transform.rotation);
+
         childCubes = _spawner.Spawn(_chanceOfSeparation);
-        _explosion.Explode(childCubes);
+
+        if (childCubes.Count != 0)
+            _explosion.Explode(childCubes);
+        else
+            _explosion.Explode();
+
         Destroy(gameObject);
     }
 

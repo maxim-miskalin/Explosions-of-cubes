@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Cube _cube;
+    [SerializeField] private Cube _cubePrefab;
     [SerializeField] private int _minQuantityObject = 2;
     [SerializeField] private int _maxQuantityObject = 6;
 
@@ -19,10 +19,10 @@ public class Spawner : MonoBehaviour
 
             for (int i = 0; i < quantity; i++)
             {
-                Cube newCube = Instantiate(_cube, transform.position, Random.rotation);
+                Cube newCube = Instantiate(_cubePrefab, transform.position, Random.rotation);
 
                 newCube.ChangeParameters(_reducingParameters);
-                
+
                 childCubes.Add(newCube.GetRigidbody());
             }
         }
