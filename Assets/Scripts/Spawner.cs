@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
 
                 newCube.ChangeParameters(_reducingParameters);
                 
-                childCubes.Add(newCube.GetComponent<Rigidbody>());
+                childCubes.Add(newCube.GetRigidbody());
             }
         }
 

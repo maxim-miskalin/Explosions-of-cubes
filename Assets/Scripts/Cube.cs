@@ -9,13 +9,25 @@ public class Cube : MonoBehaviour
     [SerializeField] private Explosion _explosion;
     [SerializeField] private float _chanceOfSeparation = 1.0f;
 
-    private List<Rigidbody> _childCubes = new();
+    private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void OnMouseUpAsButton()
     {
-        _childCubes = _spawner.Spawn(_chanceOfSeparation);
-        _explosion.Explode(_childCubes);
+        List<Rigidbody> childCubes = new();
+
+        childCubes = _spawner.Spawn(_chanceOfSeparation);
+        _explosion.Explode(childCubes);
         Destroy(gameObject);
+    }
+
+    public Rigidbody GetRigidbody()
+    {
+        return _rigidbody;
     }
 
     public void ChangeParameters(float reducingParameters)

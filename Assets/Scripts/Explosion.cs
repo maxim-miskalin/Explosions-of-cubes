@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField] private float _explosionRadius = 30f;
-    [SerializeField] private float _explosionForce = 20f;
+    [SerializeField] private float _radius = 30f;
+    [SerializeField] private float _force = 20f;
 
     public void Explode(List<Rigidbody> childCubes)
     {
@@ -12,7 +12,7 @@ public class Explosion : MonoBehaviour
         {
             foreach (Rigidbody child in childCubes)
             {
-                child.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+                child.AddExplosionForce(_force, transform.position, _radius);
             }
         }
     }
