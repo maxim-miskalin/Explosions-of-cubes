@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody), typeof(Renderer))]
 public class Cube : MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
@@ -11,6 +10,8 @@ public class Cube : MonoBehaviour
     [SerializeField] private ParticleSystem _effect;
 
     private Rigidbody _rigidbody;
+
+    public Rigidbody Rigidbody => _rigidbody;
 
     private void Awake()
     {
@@ -31,11 +32,6 @@ public class Cube : MonoBehaviour
             _explosion.Explode();
 
         Destroy(gameObject);
-    }
-
-    public Rigidbody GetRigidbody()
-    {
-        return _rigidbody;
     }
 
     public void ChangeParameters(float reducingParameters)
